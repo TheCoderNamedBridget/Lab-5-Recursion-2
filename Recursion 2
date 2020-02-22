@@ -1,8 +1,11 @@
+
 /**Four recursive problems. 
  * Add your two facade functions.
  * Add your code to the four functions given below.
  * Do not change any part of the function headers (name, parameters, or return type).
  * Do not change any part of the main.
+ * @author Bridget Naylor
+ * @date 2/17/2020
  */
 public class Main {
 	public static void main( String[] args ) {
