@@ -32,7 +32,38 @@ public class Main {
 	//Write your facade functions here
 
 
+	/** Fascade function that calls maxArray
+	 * @param array array of values (sorted or unsorted)
+	 * @param i iterator
+	 * @param max maximum value found so far
+	 * @return maximum value
+	 */
+	private static int findMax ( int [] array) {
 
+		int i = 0;
+		
+		int max = 0;
+		
+		return maxArray( array, i + 1, max);
+			 
+	}
+	
+	
+	/** Fascade function that calls min Array
+	 * @param array array of values (sorted or unsorted)
+	 * @param i iterator
+	 * @param min maximum value found so far
+	 * @return minimum value
+	 */
+	private static int findMin ( int [] array) {
+
+		int i = 0;
+		
+		int min = array[0];
+		
+		return minArray( array, i + 1, min);
+			 
+	}
 
 	/** Finds the maximum value in an array
 	 * @param array array of values (sorted or unsorted)
@@ -41,30 +72,111 @@ public class Main {
 	 * @return maximum value
 	 */
 	private static int maxArray( int [] array, int i, int max ) {
+		
+		
+		if (i == array.length ) {
+			
+			return max;
+			
+		} else if ( array[ i ] > max ) {
+			
+			max = array[ i ];
+			
+			
+		}
+		
+		//System.out.println( "Array = " + array + " Int i = " + i + " Max = " + max );
+		
+		return maxArray( array, i + 1, max);
 			 
 	}
-	/** Finds the maximum value in an array
+	
+	/** Finds the minimum value in an array
 	 * @param array array of values (sorted or unsorted)
 	 * @param i iterator
 	 * @param min maximum value found so far
 	 * @return minimum value
 	 */
 	private static int minArray( int [] array, int i, int min ) {
+		
+		if (i == array.length ) {
+			
+			return min;
+			
+		} else if ( array[ i ] < min ) {
+			
+			min = array[ i ];
+			
+			
+		}
+		
+		//System.out.println( "Array = " + array + " Int i = " + i + " Max = " + max );
+		
+		return minArray( array, i + 1, min);
 			 
 	}
+	
 	/** Reverses a string
 	 * @param s the string to reverse
 	 * @return the reversed string
 	 */
 	public static String reverseStr( String s ) {
+
 		
+		if ( s.length() == 0) {
+			
+			return "";
+			
+		} else if ( s.length() == 1) {
+			
+			return s;
+			
+		}
+		
+		String firstIndex = s.substring(0,1);
+		
+		//System.out.println( "The original string " + s + " first index " + firstIndex );
+		
+		s = s.substring( 1, s.length() );
+		
+		
+		
+		return reverseStr( s ) + firstIndex;
 	}
+	
 	/** Returns the number of times c appears in the string str
 	 * @param str string to test
 	 * @param c character to find
 	 * @return number of times the character appeared in the string
 	 */
 	public static int charFrequency( String str, char c ) {	
+		
+		if ( str.length() == 1 ) {
+			
+			if ( str.equals( c ) ) {
+				
+				return 1;
+				
+			} else {
+				
+				return 0;
+				
+			}
+			
+		}
+		
+		if ( str.substring( 0,1 ).equals( Character.toString(c) ) ) { 
+			
+			return 1 + charFrequency( str.substring( 1, str.length()), c );
+			
+		} else {
+			
+			return charFrequency( str.substring( 1, str.length()), c );
+			
+		}
+		
+		
+		
 		
 	}
 }
